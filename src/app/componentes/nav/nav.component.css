@@ -1,0 +1,68 @@
+.navbar{
+  background-color: #9B32A1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 85px;
+  padding: 5px 2%;
+  border-bottom: 3px solid rgba(246, 75, 255, 0.5);
+  position: sticky;
+  top: 0px;
+  z-index: 10;
+  font-family: 'Lato', sans-serif;
+}
+.navbar .logo{
+  cursor: pointer;
+  margin-right: auto;
+}
+.navbar .logo img{
+  border-radius: 100%;
+  height: 70px;
+  width: auto;
+  transition: all 0.3s;
+  box-shadow: 0 2px 5px 0 rgba(255, 228, 139, 0.5);
+}
+.navbar .logo img:hover{
+  transform: scale(1.2);
+}
+.navbar .nav-links{
+  list-style: none;
+}
+.navbar .nav-links li{
+  display: inline-block;
+  padding: 0 20px;
+}
+.navbar .nav-links li:hover{
+  transform: scale(1.1);
+}
+.navbar .nav-links a{
+  font-weight: 300;
+  color: #eceff1;
+  text-decoration: none;
+  transition: all 0.3s ease 0s;
+  font-size: 18px;
+}
+.navbar .nav-links li a:hover{
+  color: #FFE48B;
+  border: 1px solid #FFE48B;
+  padding: 9px 25px;
+  border-radius: 50px;
+}
+.navbar .btn{
+  margin-left: 10px;
+  font-weight: 300;
+  color: #9B32A1;
+  padding: 9px 25px;
+  background: #eceff1;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  font-size: 18px;
+  font-family: 'Lato', sans-serif;
+}
+.navbar .btn:hover{
+  background-color: #e2f1f8;
+  color: #e1c97a;
+  transform: scale(1.2);
+}

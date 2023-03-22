@@ -1,0 +1,15 @@
+
+/* ----------------------------------------
+   -------------- SERVICIOS ---------------
+   ---------------------------------------- */
+.service-title h2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #eceff1;
+  background-color: #9B32A1;
+  font-size: 40px;
+  font-weight: 400;
+  text-shadow: 1px 1px 2px rgba(0,0,0, 0.5);
+}
+

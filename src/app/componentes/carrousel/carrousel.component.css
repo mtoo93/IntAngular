@@ -1,0 +1,68 @@
+/* ----------------------------------------
+    ---------- HEADER/CARROUSEL ------------
+    ---------------------------------------- */
+.containerHeader{
+  width: 90%;
+  min-height: 10vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.slider{
+  background: rgb(155,50,161);
+  background: linear-gradient(180deg, rgba(155,50,161,1) 0%, rgba(255,228,139,1) 100%);
+  padding: 20px 0;
+
+}
+.slider_container{
+  display: grid;
+  grid-template-columns: 50px 1fr 50px;
+  align-items: center;
+  gap: 1em;
+}
+.slider_body{
+  grid-column: 2/3;
+  grid-row: 1/2;
+  opacity: 0;
+  pointer-events: none;
+  display: grid;
+  background: transparent;
+  grid-template-columns: 1fr max-content;
+  transition:  opacity 1.5s;
+}
+.slider_body--show{
+  opacity: 1;
+  pointer-events: unset;
+}
+.subtitle{
+  font-weight: 300;
+  font-size: 2.5rem;
+  margin-top: 31%;
+  margin-left: 20%;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+
+
+
+}
+.slider_review{
+  font-weight: 100;
+  font-size: 20px;
+  line-height: 1.7;
+}
+.slider_img{
+  width: 500px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 5%;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
+}
+.slider_arrow{
+  cursor: pointer;
+  width: 90%;
+}
+.slider_arrow:nth-of-type(2){
+  justify-self: end;
+}

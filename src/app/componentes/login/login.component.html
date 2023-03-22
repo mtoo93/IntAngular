@@ -1,0 +1,39 @@
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'"
+        class="close" title="Close Modal">&times;</span>
+
+  <!-- Modal Content -->
+  <form class="modal-content animate" [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+    <div class="imgcontainer">
+      <img src="assets/Logo.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+
+      <label for="user">Usuario</label>
+      <input type="text" placeholder="Ingrese su usuario" name="user" id="user"
+             formControlName="user"/>
+      <div *ngIf="loginForm.controls['user'].invalid && (loginForm.controls['user'].dirty || loginForm.controls['user'].touched)">
+        <p class="errorText" *ngIf="loginForm.controls['user'].errors?.['required']">
+          *Este campo debe estar completo</p>
+      </div>
+
+      <label for="pass">Password</label>
+      <input type="password" placeholder="Ingrese su contraseña" name="pass" id="pass"
+             formControlName="pass"/>
+      <div *ngIf="loginForm.controls['pass'].invalid && (loginForm.controls['pass'].dirty
+       ||
+      loginForm.controls['pass'].touched)">
+        <p class="errorText"> *Este campo debe estar completo</p>
+      </div>
+      <div *ngIf="credencialesInvalidas" class="errorText">Credenciales inválidas</div>
+    </div>
+
+    <div class="containerbtn">
+      <button type="submit" class= "cancelbtn" id="login-btn" [disabled]="loginForm.invalid">Login</button>
+
+      <button type="button" (click)="closeModal()" class="cancelbtn">Cerrar</button>
+    </div>
+  </form>
+</div>
+
