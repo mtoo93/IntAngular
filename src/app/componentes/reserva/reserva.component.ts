@@ -76,10 +76,16 @@ export class ReservaComponent implements OnInit {
     const telefono = this.reservaForm.get('tel')!.value;
     const raza = this.reservaForm.get('raza')!.value;
     const size = this.reservaForm.get('size')!.value;
-    const nombre_servicio = this.reservaForm.get('service')!.value;
+    let nombre_servicio = this.reservaForm.get('service')!.value;
     const fecha = this.reservaForm.get('date')!.value;
     const hora = this.reservaForm.get('time')!.value;
     const observaciones = this.reservaForm.get('details')!.value;
+    if (nombre_servicio === "Corte higienico") {
+      nombre_servicio = "Corte higienico";
+    } else {
+      nombre_servicio = nombre_servicio + " " + size;
+    }
+
 
     const reserva = {
       "fecha": fecha,
@@ -90,24 +96,29 @@ export class ReservaComponent implements OnInit {
       "raza": raza,
       "size": size,
       "observaciones": observaciones,
-      "nombre_servicio": nombre_servicio +" "+ size
+      "nombre_servicio": nombre_servicio
     };
-    console.log(reserva);
 
+
+    console.log(reserva);
     this.serviceReserva.createReserva(reserva).pipe(
       tap(response => {
         console.log(response);
-        if (response.status === 201) {
           alert('Reserva creada con éxito');
           this.router.navigate(['/']);
-        }
+
       }),
       catchError(error => {
         console.log(error);
-        alert('Error al crear la reserva');
+        alert('Completa los campos');
         return throwError(error);
       })
+
     ).subscribe();
+  }
+
+  public handleDenial(): void {
+
   }
 }
 

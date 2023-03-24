@@ -138,8 +138,8 @@ input, select{
 }
 .cancelbtn {
   font-weight: 300;
-  background-color: #9B32A1;
   padding: 9px 25px;
+  background-color: #9B32A1;
   color: #eceff1;
   border: none;
   border-radius: 50px;

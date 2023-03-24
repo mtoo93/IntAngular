@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {Observable, throwError} from "rxjs";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 import {catchError, map} from "rxjs/operators";
-import {ReservaModelo} from "../modelos/Reserva.modelo";
 import {ServiceLoginService} from "./service-login.service";
 
 @Injectable({
@@ -19,5 +18,7 @@ export class ServiceReservaService {
         catchError(this.serviceLogin.handleError)
       );
   }
+
+
 }
 

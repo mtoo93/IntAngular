@@ -34,7 +34,7 @@
   <section class="formulario" >
 
     <div class="containerform">
-      <form [formGroup]="reservaForm" (ngSubmit)="submitReserva()">
+      <form [formGroup]="reservaForm" (ngSubmit)="submitReserva()" >
         <div>
           <label for="namepet">Nombre de la mascota</label>
           <input type="text" id="namepet" name="firstname" placeholder=" Nombre de la mascota"  formControlName="namepet"/>
@@ -152,7 +152,7 @@
           <p class="errorText" *ngIf="reservaForm.controls['details'].errors?.['maxlength']">
             *Maximo: 45 caracteres</p>
         </div>
-        <button class= "cancelbtn" type="submit">Solicitar</button>
+        <button class="cancelbtn" type="submit">Solicitar</button>
       </form>
     </div>
     <div class="imgform">

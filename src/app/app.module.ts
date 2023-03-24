@@ -16,11 +16,16 @@ import {ServiceReservaService} from "./servicios/service-reserva.service";
 import {ServiceLoginService} from "./servicios/service-login.service";
 import {ServicePropietarioService} from "./servicios/service-propietario.service";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
 import { AboutusComponent } from './componentes/aboutus/aboutus.component';
 import {CommonModule, DatePipe} from "@angular/common";
 import {MatInputModule} from "@angular/material/input";
 import {MatTableModule} from "@angular/material/table";
+import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
+import { TableModule } from 'primeng/table';
+import {ToastModule} from "primeng/toast";
+import {ToolbarModule} from "primeng/toolbar";
+import {NgbPagination} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -45,7 +50,12 @@ import {MatTableModule} from "@angular/material/table";
     ReactiveFormsModule,
     HttpClientModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    SweetAlert2Module.forRoot(),
+    TableModule,
+    ToastModule,
+    ToolbarModule,
+    NgbPagination
   ],
   providers: [
     LoginComponent,
