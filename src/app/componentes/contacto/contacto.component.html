@@ -1,0 +1,53 @@
+<section class="formulario">
+<div class="containerform">
+  <form #contactForm="ngForm" (ngSubmit)="submitContacto(); contactForm.reset()">
+    <div>
+      <label for="name">Nombre del dueño</label>
+      <input type="text" name="name" id="name" ngModel required #name="ngModel" placeholder="Nombre del dueño">
+      <div *ngIf="name.invalid && (name.dirty || name.touched)">
+        <div *ngIf="name.errors?.['required']">
+          <p class="errorText"> *Este campo debe estar completo</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <label for="namepet">Nombre de la mascota</label>
+      <input type="text" name="namepet" id="namepet" ngModel required #namepet="ngModel" placeholder="Nombre de la mascota">
+      <div *ngIf="namepet.invalid && (namepet.dirty || namepet.touched)">
+        <div *ngIf="namepet.errors?.['required']">
+          <p class="errorText"> *Este campo debe estar completo</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <label for="telefono">Telefono</label>
+      <input type="text" name="telefono" id="telefono" ngModel required pattern="[0-9]+" #telefono="ngModel" placeholder="Telefono">
+      <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+        <div *ngIf="telefono.errors?.['required']">
+          <p class="errorText"> *Este campo debe estar completo</p>
+        </div>
+        <div *ngIf="telefono.errors?.['pattern']">
+          <p class="errorText"> *Este campo solo permite numeros</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <label for="message">Consulta</label>
+      <textarea id="message" name="message" ngModel required #message="ngModel" placeholder="Ingrese su consulta"></textarea>
+      <div *ngIf="message.invalid && (message.dirty || message.touched)">
+        <div *ngIf="message.errors?.['required']">
+          <p class="errorText"> *Este campo debe estar completo</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button type="submit" class="submitbtn" [disabled]="contactForm.invalid">Submit</button>
+    </div>
+  </form>
+</div>
+  <div class="imgform">
+
+    <!--IMAGEN-->
+    <img src="assets/playa.jpeg" alt="Perro en la playa">
+  </div>
+</section>
