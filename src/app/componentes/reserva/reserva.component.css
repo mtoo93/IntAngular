@@ -153,3 +153,7 @@ input, select{
   transform: scale(1.2);
 
 }
+.cancelbtn:disabled{
+  color: #9B32A1;
+  background: #eceff1;
+}

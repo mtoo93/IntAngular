@@ -26,6 +26,10 @@ import { TableModule } from 'primeng/table';
 import {ToastModule} from "primeng/toast";
 import {ToolbarModule} from "primeng/toolbar";
 import {NgbPagination} from "@ng-bootstrap/ng-bootstrap";
+import { ContactoComponent } from './componentes/contacto/contacto.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ModalComponent } from './componentes/propietario/modal/modal.component';
+
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -39,9 +43,12 @@ import {NgbPagination} from "@ng-bootstrap/ng-bootstrap";
     FooterComponent,
     ServicioPeluComponent,
     CarrouselComponent,
-    AboutusComponent
+    AboutusComponent,
+    ContactoComponent,
+    ModalComponent,
   ],
   imports: [
+    ModalModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -55,13 +62,14 @@ import {NgbPagination} from "@ng-bootstrap/ng-bootstrap";
     TableModule,
     ToastModule,
     ToolbarModule,
-    NgbPagination
+    NgbPagination,
   ],
   providers: [
+    ContactoComponent,
     LoginComponent,
     ServiceReservaService,
-  ServiceLoginService,
-  ServicePropietarioService,
-  DatePipe]
+    ServiceLoginService,
+    ServicePropietarioService,
+    DatePipe]
 })
 export class AppModule { }

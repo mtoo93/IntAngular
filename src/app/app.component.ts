@@ -10,6 +10,5 @@ import {ServiceReservaService} from "./servicios/service-reserva.service";
 })
 export class AppComponent {
   title = 'PeluqCanina';
-
 }
 

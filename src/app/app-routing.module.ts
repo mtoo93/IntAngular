@@ -5,7 +5,8 @@ import {ReservaComponent} from "./componentes/reserva/reserva.component";
 import {PropietarioComponent} from "./componentes/propietario/propietario.component";
 import {ServicioPeluComponent} from "./componentes/servicio-pelu/servicio-pelu.component";
 import {AboutusComponent} from "./componentes/aboutus/aboutus.component";
-import {LoginComponent} from "./componentes/login/login.component";
+import {ContactoComponent} from "./componentes/contacto/contacto.component";
+
 
 
 const appRoutes:Routes = [
@@ -21,6 +22,7 @@ const appRoutes:Routes = [
       .then(m => m.LoginComponent) },
   {path: 'reserva', component:ReservaComponent},
   {path: 'propietario', component:PropietarioComponent},
+
 ];
 
 @NgModule({
