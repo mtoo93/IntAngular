@@ -2,17 +2,132 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h5>Actualizar Reserva</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <form *ngIf="reservaForm" [formGroup]="reservaForm" (ngSubmit)="submitReserva()" >
+          <div>
+            <label for="namepet">Nombre de la mascota</label>
+            <input type="text" id="namepet" name="firstname" placeholder=" Nombre de la mascota"  formControlName="namepet"/>
+            <div *ngIf="reservaForm.controls['namepet'].invalid && (reservaForm.controls['namepet'].dirty
+          || reservaForm.controls['namepet'].touched)">
+              <p class="errorText" *ngIf="reservaForm.controls['namepet'].errors?.['required']">
+                *Este campo debe estar completo</p>
+              <p class="errorText" *ngIf="reservaForm.controls['namepet'].errors?.['maxlength']">
+                *Maximo: 45 caracteres</p>
+            </div>
+            <label for="nameowner">Apellido de la familia</label>
+            <input type="text" id="nameowner" name="lastname" placeholder=" Apellido de la familia" formControlName="nameowner"/>
+            <div *ngIf="reservaForm.controls['nameowner'].invalid && (reservaForm.controls['nameowner'].dirty
+          || reservaForm.controls['nameowner'].touched)">
+              <p class="errorText" *ngIf="reservaForm.controls['nameowner'].errors?.['required']">
+                *Este campo debe estar completo</p>
+              <p class="errorText" *ngIf="reservaForm.controls['nameowner'].errors?.['maxlength']">
+                *Maximo: 45 caracteres</p>
+            </div>
+          </div>
+          <div>
+            <label for="tel">Telefono de contacto</label>
+            <input type="text" id="tel" name="tel" placeholder=" Telefono" formControlName="tel"/>
+            <div *ngIf="reservaForm.controls['tel'].invalid && (reservaForm.controls['tel'].dirty
+          || reservaForm.controls['tel'].touched)">
+              <p class="errorText" *ngIf="reservaForm.controls['tel'].errors?.['required']">
+                *Este campo debe estar completo</p>
+              <p class="errorText" *ngIf="reservaForm.controls['tel'].errors?.['pattern']">
+                *Este campo solo acepta numeros enteros</p>
+              <p class="errorText" *ngIf="reservaForm.controls['tel'].errors?.['maxlength']">
+                *Maximo: 11 caracteres</p>
+            </div>
+
+            <label for="raza">Raza (Si no tiene raza definida, ingrese "Mestizo")</label>
+            <input type="text" id="raza" name="raza" placeholder=" Raza" formControlName="raza"/>
+            <div *ngIf="reservaForm.controls['raza'].invalid && (reservaForm.controls['raza'].dirty
+          || reservaForm.controls['raza'].touched)">
+              <p class="errorText" *ngIf="reservaForm.controls['raza'].errors?.['required']">
+                *Este campo debe estar completo</p>
+              <p class="errorText" *ngIf="reservaForm.controls['raza'].errors?.['maxlength']">
+                *Maximo: 15 caracteres</p>
+            </div>
+          </div>
+          <div>
+            <label for="size">Tamaño aproximado</label>
+            <select id="size" name="size" formControlName="size">
+
+              <option value=""> Seleccione una opcion</option>
+              <option value="Mini">Mini (0 a 5kg)</option>
+              <option value="Chico">Chico (5 a 10 kg)</option>
+              <option value="Mediano">Mediano (10 a 25kg)</option>
+              <option value="Grande">Grande (25 a 40 kg)</option>
+              <option value="Gigante">Gigante (Más de 40kg)</option>
+            </select>
+            <div *ngIf="reservaForm.controls['size'].invalid && (reservaForm.controls['size'].dirty
+          || reservaForm.controls['size'].touched)">
+              <p class="errorText" *ngIf="reservaForm.controls['size'].errors?.['required']">
+                *Este campo debe estar completo</p>
+            </div>
+          </div>
+          <div>
+            <label for="service">Servicio</label>
+            <select id="service" name="service" formControlName="service">
+
+              <option value=""> Seleccione una opcion</option>
+              <option value="Baño"> Baño </option>
+              <option value="Corte"> Corte </option>
+              <option value="Baño y corte">Baño y corte</option>
+              <option value="Deslanado">Baño y deslanado</option>
+              <option value="Corte higienico">Corte higiénico</option>
+              <option value="Spa">Spa</option>
+            </select>
+            <div *ngIf="reservaForm.controls['service'].invalid && (reservaForm.controls['service'].dirty
+          || reservaForm.controls['service'].touched)">
+              <p class="errorText" *ngIf="reservaForm.controls['service'].errors?.['required']">
+                *Este campo debe estar completo</p>
+            </div>
+          </div>
+          <div>
+            <label for="date">Fecha</label>
+            <input type="date" id="date" name="date" placeholder="Fecha" formControlName="date"/>
+            <div *ngIf="reservaForm.controls['date'].invalid && (reservaForm.controls['date'].dirty
+      || reservaForm.controls['date'].touched)">
+              <p class="errorText" *ngIf="reservaForm.controls['date'].errors?.['required']">
+                *Este campo debe estar completo</p>
+              <p class="errorText" *ngIf="reservaForm.controls['date'].errors?.['pattern']">
+                *El formato debe ser AAAA-MM-DD</p>
+              <p class="errorText" *ngIf="reservaForm.controls['date'].errors?.['dateInvalid']">
+                *La fecha seleccionada no es valida</p>
+              <p class="errorText" *ngIf="reservaForm.controls['date'].errors?.['dateWeekend']">
+                *No brindamos atención los domingos</p>
+              <p class="errorText" *ngIf="reservaForm.controls['date'].errors?.['dateMax']">
+                *Seleccione una fecha anterior al 2028</p>
+
+            </div>
+            <div>
+              <label for="time">Hora</label>
+              <input type="time" id="time" name="time" placeholder="Hora" formControlName="time"/>
+              <div *ngIf="reservaForm.controls['time'].invalid && (reservaForm.controls['time'].dirty || reservaForm.controls['time'].touched)">
+                <p class="errorText" *ngIf="reservaForm.controls['time'].errors?.['required']">
+                  *Este campo debe estar completo</p>
+                <p class="errorText" *ngIf="reservaForm.controls['time'].errors?.['pattern']">
+                  *El formato debe ser HH:MM</p>
+                <p class="errorText" *ngIf="reservaForm.controls['time'].errors?.['timeInvalid']">
+                  *Nuestro horario laboral es de 09:00 a 17:00</p>
+              </div>
+
+
+
+            </div>
+          </div>
+          <label for="details">Observaciones que considere necesarias</label>
+          <textarea id="details" name="details" placeholder=" Observaciones" style="height: 50px; width: 90%" formControlName="details"></textarea>
+          <div>
+            <p class="errorText" *ngIf="reservaForm.controls['details'].errors?.['maxlength']">
+              *Maximo: 45 caracteres</p>
+          </div>
+          <button class="cancelbtn" type="submit">Solicitar</button>
+        </form>
       </div>
     </div>
   </div>

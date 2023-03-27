@@ -1,6 +1,6 @@
 <section class="formulario">
 <div class="containerform">
-  <form #contactForm="ngForm" (ngSubmit)="submitContacto(); contactForm.reset()">
+  <form #contactForm="ngForm" (ngSubmit)="sendEmail($event); contactForm.reset()">
     <div>
       <label for="name">Nombre del dueño</label>
       <input type="text" name="name" id="name" ngModel required #name="ngModel" placeholder="Nombre del dueño">

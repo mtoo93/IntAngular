@@ -4,6 +4,7 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/form
 import {Router} from "@angular/router";
 import {catchError} from "rxjs/operators";
 import {tap, throwError} from "rxjs";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-reserva',
@@ -104,21 +105,33 @@ export class ReservaComponent implements OnInit {
     this.serviceReserva.createReserva(reserva).pipe(
       tap(response => {
         console.log(response);
-          alert('Reserva creada con éxito');
+        Swal.fire({
+          title: 'Reserva creada!',
+          text: 'Gracias por usar nuestros servicios',
+          imageUrl: '/assets/smileBulldog.jpg',
+          imageWidth: 200,
+          imageHeight: 200,
+          imageAlt: 'Custom image',
+        })
           this.router.navigate(['/']);
 
       }),
       catchError(error => {
         console.log(error);
-        alert('Completa los campos');
+        Swal.fire({
+          title: 'No se pudo crear la reserva',
+          text: 'Faltan completar campos',
+          imageUrl: '/assets/sadDog.jpg',
+          imageWidth: 400,
+          imageHeight: 200,
+          imageAlt: 'Custom image',
+        })
+
         return throwError(error);
       })
 
     ).subscribe();
   }
 
-  public handleDenial(): void {
-
-  }
 }
 

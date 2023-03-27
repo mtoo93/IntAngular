@@ -70,6 +70,7 @@ import { ModalComponent } from './componentes/propietario/modal/modal.component'
     ServiceReservaService,
     ServiceLoginService,
     ServicePropietarioService,
-    DatePipe]
+    DatePipe,
+  ReservaComponent]
 })
 export class AppModule { }

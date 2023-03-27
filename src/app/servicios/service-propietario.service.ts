@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ReservaModelo} from "../modelos/Reserva.modelo";
-import {map} from "rxjs/operators";
-import {Observable} from "rxjs";
+import {catchError, map} from "rxjs/operators";
+import {Observable, throwError} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -38,10 +38,34 @@ export class ServicePropietarioService {
     );
   }
 
-  updateReserva(idreserva: number, reserva: ReservaModelo): Observable<ReservaModelo> {
-    return this.http.put<ReservaModelo>(`http://localhost:8080/reserva/add/${idreserva}`, reserva);
+  actualizarReserva(id: number, datos: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.put(`http://localhost:8080/reserva/${id}`, datos, httpOptions)
+      .pipe(
+        map(response => {
+          console.log('Petición exitosa:', response);
+          return response;
+        }),
+        catchError(error => {
+          console.log('Error en la petición:', error);
+          return throwError(error);
+        })
+      );
   }
 
+  getById(id:number):Observable<ReservaModelo>{
+    return this.http
+      .get<ReservaModelo>('http://localhost:8080/reserva/all/'+id);
+  }
+
+  borrarReserva(id: number): Observable<any> {
+
+    return this.http.delete('http://localhost:8080/reserva/'+id);
+  }
 }
 
 

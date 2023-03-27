@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {jsPDF} from 'jspdf';
+import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
 
 @Component({
   selector: 'app-contacto',
@@ -8,23 +8,15 @@ import {jsPDF} from 'jspdf';
 })
 export class ContactoComponent {
 
-  submitContacto() {
-    const name = (<HTMLInputElement>document.getElementById("name")).value;
-    const namepet = (<HTMLInputElement>document.getElementById("namepet")).value;
-    const telefono = (<HTMLInputElement>document.getElementById("telefono")).value;
-    const message = (<HTMLInputElement>document.getElementById("message")).value;
 
-    // Crea un nuevo objeto de documento PDF
-    const doc = new jsPDF();
+  public sendEmail(e: Event) {
+      e.preventDefault();
+      emailjs.sendForm('service_itmaux6', 'template_tttxkji', e.target as HTMLFormElement, 'xQiFc9hV_jgdmlaK1')
+        .then((result: EmailJSResponseStatus) => {
+          console.log(result.text);
+        }, (error) => {
+          console.log(error.text);
+        });
+    }
 
-    // Agrega el texto del formulario al PDF
-    doc.text(`Nombre del dueño: ${name}`, 10, 10);
-    doc.text(`Nombre de la mascota: ${namepet}`, 10, 20);
-    doc.text(`Telefono: ${telefono}`, 10, 30);
-    doc.text(`Consulta: ${message}`, 10, 40);
-
-    // Guarda el archivo PDF
-    doc.save('formulario.pdf');
-
-  }
 }

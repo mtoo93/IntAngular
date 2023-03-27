@@ -2,39 +2,59 @@
 
   <div class="service">
     <div class="services-item">
-      <a href="reserva.html#baño" title="Precio" ><img src="assets/001-pet.png" alt="icono baño" />
+      <a href="#" title="Precio" (click)="cargarServicios('baño')" ><img src="assets/001-pet.png" alt="icono baño" />
       </a>
       <h3>Baño</h3>
+    </div>
+    <div *ngFor="let servicio of servicioBanio">
+      <p>{{servicio.nombreServicio}}, Precio: {{servicio.precio}}</p>
 
     </div>
+
     <div class="services-item">
-      <a href="reserva.html#corte" title="Precio"><img src="assets/002-pet-grooming.png" alt="icono corte"/>
+      <a href="#" title="Precio" (click)="cargarServicios('corte')"><img src="assets/002-pet-grooming.png" alt="icono corte"/>
       </a>
       <h3>Corte</h3>
     </div>
+    <div *ngFor="let servicio of servicioCorte">
+      <p>{{servicio.nombreServicio}}, Precio: {{servicio.precio}}</p>
+    </div>
+
   </div>
   <div class="service">
     <div class="services-item">
-      <a href="reserva.html#bañocorte" title="Precio"><img src="assets/003-aesthetics.png" alt="icono baño y corte" />
+      <a href="#" title="Precio" (click)="cargarServicios('corteybanio')"><img src="assets/003-aesthetics.png" alt="icono baño y corte" />
       </a>
       <h3>Baño y corte</h3>
     </div>
+    <div *ngFor="let servicio of servicioCorteyBanio">
+      <p>{{servicio.nombreServicio}}, Precio: {{servicio.precio}}</p>
+    </div>
     <div class="services-item">
-      <a href="reserva.html#deslanado" title="Precio"> <img src="assets/006-sheep.png" alt="icono deslanado" />
+      <a href="#" title="Precio" (click)="cargarServicios('deslanado')"> <img src="assets/006-sheep.png" alt="icono deslanado" />
       </a>
       <h3>Baño y deslanado</h3>
+    </div>
+    <div *ngFor="let servicio of servicioDeslanado">
+      <p>{{servicio.nombreServicio}}, Precio: {{servicio.precio}}</p>
     </div>
   </div>
   <div class="service">
     <div class="services-item">
-      <a href="reserva.html#cortehig" title="Precio"> <img src="assets/005-brush.png" alt="icono corte higienico" />
+      <a href="#" title="Precio" (click)="cargarServicios('higienico')"> <img src="assets/005-brush.png" alt="icono corte higienico" />
       </a>
       <h3>Corte higienico</h3>
     </div>
+    <div *ngFor="let servicio of servicioHigienico">
+      <p>{{servicio.nombreServicio}}, Precio: {{servicio.precio}}</p>
+    </div>
     <div class="services-item">
-      <a href="reserva.html#spa" title="Precio"> <img src="assets/004-pet-grooming-1.png" alt="icono spa" />
+      <a href="#" title="Precio" (click)="cargarServicios('spa')"> <img src="assets/004-pet-grooming-1.png" alt="icono spa" />
       </a>
       <h3>Spa</h3>
+    </div>
+    <div *ngFor="let servicio of servicioSpa">
+      <p>{{servicio.nombreServicio}}, Precio: {{servicio.precio}}</p>
     </div>
   </div>
 </section>

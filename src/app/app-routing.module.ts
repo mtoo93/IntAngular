@@ -6,6 +6,7 @@ import {PropietarioComponent} from "./componentes/propietario/propietario.compon
 import {ServicioPeluComponent} from "./componentes/servicio-pelu/servicio-pelu.component";
 import {AboutusComponent} from "./componentes/aboutus/aboutus.component";
 import {ContactoComponent} from "./componentes/contacto/contacto.component";
+import {AuthGuard} from "./auth.guard";
 
 
 
@@ -21,7 +22,7 @@ const appRoutes:Routes = [
   { path: 'login', loadChildren: () => import('./componentes/login/login.component')
       .then(m => m.LoginComponent) },
   {path: 'reserva', component:ReservaComponent},
-  {path: 'propietario', component:PropietarioComponent},
+  {path: 'propietario', component:PropietarioComponent,  canActivate: [AuthGuard]},
 
 ];
 
